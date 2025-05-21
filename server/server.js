@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express")
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
@@ -5,11 +6,11 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const cors = require("cors")
 const app = express()
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 // JWT secret key - in production, use environment variables
-const JWT_SECRET = "suimon-secret-key-change-in-production"
-const TOKEN_EXPIRY = "7d" // Token expires in 7 days
+const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"
+const TOKEN_EXPIRY = "1d" // Token expires in 7 days
 
 // Middleware
 app.use(bodyParser.json())
@@ -18,7 +19,11 @@ app.use(cors())
 // MongoDB connection
 mongoose
   .connect(
-    "mongodb+srv://2022dhruvmaurya:xBNf47tLMTYc4p6x@cluster0.1lwzynq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    process.env.MONGODB_URI,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
   )
   .then(() => {
     console.log("MongoDB connected")
@@ -108,7 +113,11 @@ const authenticateToken = (req, res, next) => {
 }
 
 // ROUTES
-
+app.get("/", (req, res) => {
+  console.log("API is running")
+  res.send("Welcome to the Game API!")
+}
+)
 // Signup endpoint
 app.post("/api/auth/signup", async (req, res) => {
   const { username, email, password, walletAddress } = req.body
