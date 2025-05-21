@@ -17,7 +17,7 @@ const TESTNET_CLIENT = new SuiClient({
 })
 
 // API URL - change this to match your backend URL
-const API_URL = "http://localhost:5000/api"
+const API_URL = "https://suimon.onrender.com/api"
 
 // XP Constants
 const XP_LEVELS = [

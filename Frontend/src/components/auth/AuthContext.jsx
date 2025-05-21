@@ -4,7 +4,7 @@ import { createContext, useContext, useState, useEffect } from "react"
 import { useWallet } from "@suiet/wallet-kit"
 
 // API URL - change this to match your backend URL
-const API_URL = "http://localhost:5000/api"
+const API_URL = "https://suimon.onrender.com/api"
 
 // Create the auth context
 const AuthContext = createContext(null)

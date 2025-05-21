@@ -5,7 +5,7 @@ import { ConnectButton } from "@suiet/wallet-kit"
 import { useAuth } from "./auth/AuthContext"
 
 // API URL - change this to match your backend URL
-const API_URL = "http://localhost:5000/api"
+const API_URL = "https://suimon.onrender.com/api"
 
 // Update interval (3 minutes = 180000ms)
 const UPDATE_INTERVAL = 180000
