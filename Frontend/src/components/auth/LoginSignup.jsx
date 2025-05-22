@@ -79,6 +79,7 @@ export default function LoginSignup() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {!isLogin && (
             <div>
+              <h2 className="text-red-500 font-bold mb-3">* First connect to "wallet" then Signup</h2>
               <label className="block text-gray-300 mb-2 text-sm font-medium" htmlFor="username">
                 Username
               </label>
